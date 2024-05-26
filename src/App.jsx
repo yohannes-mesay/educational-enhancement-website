@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Resource from "./pages/Resource";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Join from "./components/auth/Join";
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resource" element={<Resource />} />
+          <Route path="/join" element={<Join />} />
         </Routes>
       </BrowserRouter>
     </div>

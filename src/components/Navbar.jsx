@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -34,12 +34,13 @@ function Navbar() {
         >
           Profile
         </NavLink>
-        <button
+        <NavLink
+          to="/join"
           className="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg"
           aria-label="Join Discussion"
         >
           Join Us
-        </button>
+        </NavLink>
       </nav>
     </header>
   );
