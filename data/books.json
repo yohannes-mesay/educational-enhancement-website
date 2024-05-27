@@ -1,0 +1,64 @@
+{
+  "res": [
+    {
+      "title": "Grade 9 Math textbook",
+      "catagory": "Grade 9-12",
+      "type": "text",
+      "image": "../src/assets/files/mathtext9.jpg",
+      "rating": 4,
+      "review": 7,
+      "subject": "math",
+      "language": "English"
+    },
+    {
+      "title": "Grade 8 Amharic Student textbook",
+      "catagory": "Grade 4-8",
+      "type": "tg",
+      "image": "../src/assets/files/amhtext8.png",
+      "rating": 3.5,
+      "review": 2,
+      "subject": "literature",
+      "language": "Amharic"
+    },
+    {
+      "title": "Grade 10 Math Student textbook",
+      "catagory": "Grade 9-12",
+      "type": "text",
+      "image": "../src/assets/files/mathtext11.jpg",
+      "rating": 4.5,
+      "review": 4,
+      "subject": "math",
+      "language": "English"
+    },
+    {
+      "title": "Grade 10 Physics Student textbook",
+      "catagory": "Grade 9-12",
+      "type": "text",
+      "image": "../src/assets/files/phytext10.png",
+      "rating": 5,
+      "review": 2,
+      "subject": "math",
+      "language": "English"
+    },
+    {
+      "title": "Grade 12 Economics UEE",
+      "catagory": "Grade 9-12",
+      "type": "exam",
+      "image": "../src/assets/files/entrance2012.jpg",
+      "rating": 4.5,
+      "review": 1,
+      "subject": "science",
+      "language": "English"
+    },
+    {
+      "title": "Grade 7 English Teachers guide",
+      "catagory": "Grade 4-8",
+      "type": "tg",
+      "image": "../src/assets/files/engtg7.png",
+      "rating": 3,
+      "review": 5,
+      "subject": "literature",
+      "language": "English"
+    }
+  ]
+}

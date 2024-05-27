@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Chip,
   Checkbox,
@@ -8,99 +8,127 @@ import {
   FormControl,
   InputLabel,
   FormControlLabel,
-  IconButton,
-  Rating,
+  TextField,
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import { useResource } from "../contexts/ResourceContext";
+import Loader from "../components/Loader";
+import ResourceItem from "../components/ResourceItem";
 
-function ResourcePage() {
+function Resource() {
+  const [language, setLanguage] = useState("");
+  const [bookType, setBookType] = useState([]);
+  const [examGrade, setExamGrade] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const { resource, isLoading } = useResource();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  const handleBookTypeChange = (event) => {
+    const { checked, value } = event.target;
+    setBookType((prev) =>
+      checked ? [...prev, value] : prev.filter((type) => type !== value)
+    );
+  };
+
+  const handleExamGradeChange = (exam) => {
+    setExamGrade(exam === "All" ? "" : exam);
+  };
+
+  const filteredResources = resource.filter((res) => {
+    const matchesLanguage = language ? res.language === language : true;
+    const matchesBookType = bookType.length
+      ? bookType.includes(res.type)
+      : true;
+    const matchesExamGrade = examGrade ? res.catagory === examGrade : true;
+    const matchesSearchQuery = searchQuery
+      ? res.title.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+    return (
+      matchesLanguage &&
+      matchesBookType &&
+      matchesExamGrade &&
+      matchesSearchQuery
+    );
+  });
+
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-
-      {/* Content */}
       <div className="flex p-8">
         {/* Sidebar */}
         <aside className="w-1/4 p-4 bg-white shadow rounded-lg">
           <h3 className="font-semibold mb-4">Exams</h3>
           <div className="flex gap-2 mb-4">
-            <Chip
-              className="cursor-pointer"
-              label="All"
-              variant="outlined"
-              size="small"
-            />
-            <Chip
-              className="cursor-pointer"
-              label="Grade 0-3"
-              size="small"
-              variant="outlined"
-            />
-            <Chip
-              className="cursor-pointer"
-              label="Grade 4-8"
-              size="small"
-              variant="outlined"
-            />
-            <Chip
-              className="cursor-pointer"
-              label="Grade 9-12"
-              size="small"
-              variant="outlined"
-            />
-            <Chip
-              className="cursor-pointer"
-              label="Grade 12+"
-              size="small"
-              variant="outlined"
-            />
+            {["All", "Grade 0-3", "Grade 4-8", "Grade 9-12", "Grade 12+"].map(
+              (exam) => (
+                <Chip
+                  key={exam}
+                  className="cursor-pointer"
+                  label={exam}
+                  variant={examGrade === exam ? "default" : "outlined"}
+                  size="small"
+                  onClick={() => handleExamGradeChange(exam)}
+                />
+              )
+            )}
           </div>
 
-          <h3 className="font-semibold mb-2">Location</h3>
+          <h3 className="font-semibold mb-2">Language</h3>
           <FormControl fullWidth className="mb-4">
-            <InputLabel>Country</InputLabel>
-            <Select defaultValue="" label="Country">
+            <InputLabel>Choose language</InputLabel>
+            <Select
+              onChange={(e) => setLanguage(e.target.value)}
+              value={language}
+              label="Choose language"
+            >
               <MenuItem value="">
-                <em>Country</em>
+                <em>Language</em>
               </MenuItem>
-              <MenuItem value="USA">USA</MenuItem>
-              <MenuItem value="Canada">Canada</MenuItem>
-              <MenuItem value="UK">UK</MenuItem>
-              <MenuItem value="Australia">Australia</MenuItem>
-              <MenuItem value="India">India</MenuItem>
+              <MenuItem value="English">English</MenuItem>
+              <MenuItem value="Amharic">Amharic</MenuItem>
+              <MenuItem value="Tigray">Tigray</MenuItem>
+              <MenuItem value="Oromifa">Oromifa</MenuItem>
+              <MenuItem value="Somali">Somali</MenuItem>
             </Select>
           </FormControl>
-          <input
-            className="border-2 border-gray-200 rounded-3xl outline-none p-2 w-full mb-4"
-            placeholder="Enter Location"
-            type="text"
-          />
 
           <h3 className="font-semibold mb-2">Book type</h3>
           <div className="flex flex-col gap-2 mb-4">
-            <FormControlLabel
-              control={<Checkbox defaultChecked color="secondary" />}
-              label={
-                <span className="flex items-center">
-                  Student textbook
-                  <Tooltip title="for students">
-                    <InfoOutlinedIcon fontSize="small" className="ml-1" />
-                  </Tooltip>
-                </span>
-              }
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked color="secondary" />}
-              label={
-                <span className="flex items-center">
-                  Teachers guide
-                  <Tooltip title="for teachers">
-                    <InfoOutlinedIcon fontSize="small" className="ml-1" />
-                  </Tooltip>
-                </span>
-              }
-            />
+            {["text", "tg", "exam"].map((type) => (
+              <FormControlLabel
+                key={type}
+                control={
+                  <Checkbox
+                    value={type}
+                    checked={bookType.includes(type)}
+                    onChange={handleBookTypeChange}
+                    color="secondary"
+                  />
+                }
+                label={
+                  <span className="flex items-center">
+                    {type === "text"
+                      ? "Student textbook"
+                      : type === "tg"
+                      ? "Teachers guide"
+                      : "Exam"}
+                    <Tooltip
+                      title={
+                        type === "text"
+                          ? "for students"
+                          : type === "tg"
+                          ? "for teachers"
+                          : "exam material"
+                      }
+                    >
+                      <InfoOutlinedIcon fontSize="small" className="ml-1" />
+                    </Tooltip>
+                  </span>
+                }
+              />
+            ))}
           </div>
 
           <h3 className="font-semibold mb-2">Subjects</h3>
@@ -135,96 +163,22 @@ function ResourcePage() {
             </p>
 
             {/* Filter Section */}
-            <div className="flex justify-between items- mb-4">
-              <p>1-10 of 2,000 resources</p>
-              <FormControl>
-                <InputLabel>Filter by</InputLabel>
-                <Select defaultValue="most-popular" label="Filter by">
-                  <MenuItem value="most-popular">Most popular</MenuItem>
-                  <MenuItem value="highest-rated">Highest rated</MenuItem>
-                  <MenuItem value="newest">Newest</MenuItem>
-                </Select>
-              </FormControl>
+            <div className="flex justify-between items-center mb-4">
+              <p>1-10 of {filteredResources.length} resources</p>
+              <TextField
+                label="Search"
+                variant="outlined"
+                size="small"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
 
             {/* Resource Cards */}
             <div className="space-y-4">
-              <div className="flex items-center p-4 bg-gray-50 rounded-lg shadow">
-                <img
-                  src="resource-image-1.png"
-                  alt="Resource 1"
-                  className="w-24 h-24 rounded-lg mr-4"
-                />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">Study Buddy</h3>
-                  <Rating value={4.5} precision={0.5} readOnly />
-                  <p>Rating: 4.5</p>
-                  <p>Reviews: 1,294</p>
-                </div>
-                <div className="flex gap-2">
-                  <Chip label="Study" size="small" />
-                  <Chip label="Practice Exams" size="small" />
-                </div>
-              </div>
-
-              <div className="flex items-center p-4 bg-gray-50 rounded-lg shadow">
-                <img
-                  src="resource-image-2.png"
-                  alt="Resource 2"
-                  className="w-24 h-24 rounded-lg mr-4"
-                />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">LearnHub</h3>
-                  <Rating value={5} precision={0.5} readOnly />
-                  <p>Rating: 5.0</p>
-                  <p>Reviews: 1,294</p>
-                </div>
-                <div className="flex gap-2">
-                  <Chip label="Study" size="small" />
-                  <Chip label="Practice Exams" size="small" />
-                  <Chip label="Discussion Room" size="small" />
-                </div>
-                <Chip label="Recommended" color="secondary" size="small" />
-              </div>
-
-              <div className="flex items-center p-4 bg-gray-50 rounded-lg shadow">
-                <img
-                  src="resource-image-3.png"
-                  alt="Resource 3"
-                  className="w-24 h-24 rounded-lg mr-4"
-                />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">StudyGenius</h3>
-                  <Rating value={4.5} precision={0.5} readOnly />
-                  <p>Rating: 4.5</p>
-                  <p>Reviews: 2,129</p>
-                </div>
-                <div className="flex gap-2">
-                  <Chip label="Study" size="small" />
-                  <Chip label="Practice Exams" size="small" />
-                </div>
-                <Chip label="New Resource" color="primary" size="small" />
-              </div>
-
-              <div className="flex items-center p-4 bg-gray-50 rounded-lg shadow">
-                <img
-                  src="resource-image-4.png"
-                  alt="Resource 4"
-                  className="w-24 h-24 rounded-lg mr-4"
-                />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">Grade 12 Resources</h3>
-                  <Rating value={4} precision={0.5} readOnly />
-                  <p>Rating: 4.0</p>
-                  <p>Reviews: 1,000</p>
-                </div>
-                <div className="flex gap-2">
-                  <Chip label="User Profiles" size="small" />
-                  <Chip label="Login for resources" size="small" />
-                  <Chip label="Study materials" size="small" />
-                </div>
-                <Chip label="Beginner" size="small" />
-              </div>
+              {filteredResources.map((res) => (
+                <ResourceItem key={res.title} resource={res} />
+              ))}
             </div>
           </div>
         </main>
@@ -233,4 +187,4 @@ function ResourcePage() {
   );
 }
 
-export default ResourcePage;
+export default Resource;
