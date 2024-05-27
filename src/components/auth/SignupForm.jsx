@@ -1,8 +1,46 @@
 import { Facebook, GitHub, Google } from "@mui/icons-material";
-
-const SignupForm = ({setIsLogin}) => {
+import { useAuth } from "../../contexts/AuthContext";
+import { useState } from "react";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+const SignupForm = ({ setIsLogin }) => {
+  const { signup } = useAuth();
+  const [formData, setFormData] = useState({
+    lname: "Tigistu",
+    password: "50",
+    email: "email",
+    role: "student",
+    fname: "chief",
+  });
+  const [formErrors, setFormErrors] = useState({ email: "" });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "email") {
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      setFormErrors({
+        ...formErrors,
+        email: isValidEmail ? "" : "Please enter a valid email address",
+      });
+    }
+    setFormData({ ...formData, [name]: value });
+  };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const singed = await signup(formData);
+    if (singed) {
+      alert("sucess");
+    }
+  }
   return (
-    <div className="bg-blue-400 text-white rounded-2xl shadow-2xl  flex flex-col items-center w-2/6 scale-125 transition duration-1000 ease-in mr-32">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-blue-400 text-white rounded-2xl shadow-2xl  flex flex-col items-center w-2/6 scale-125 transition duration-1000 ease-in mr-32"
+    >
       <h2 className="p-3 text-3xl font-bold text-white">
         Educational Enhancement
       </h2>
@@ -22,25 +60,57 @@ const SignupForm = ({setIsLogin}) => {
       {/* Inputs */}
       <div className="flex flex-col items-center justify-center mt-2">
         <input
-          type="password"
-          className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
-          placeholder="Name"
+          type="text"
+          name="fname"
+          className=" text-gray-700 rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
+          placeholder="First Name"
+          onChange={handleChange}
+        ></input>
+        <input
+          type="text"
+          name="lname"
+          className="text-gray-700 rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
+          placeholder="Last Name"
+          onChange={handleChange}
         ></input>
         <input
           type="email"
-          className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
+          name="email"
+          className="text-gray-700 rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
           placeholder="Email"
+          onChange={handleChange}
         ></input>
+        {!formErrors.email && (
+          <p className="text-red-500 text-xs italic">{formErrors.email}</p>
+        )}
         <input
           type="password"
-          className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
+          name="password"
+          className="text-gray-700 rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
           placeholder="Password"
+          onChange={handleChange}
         ></input>
-        <input
-          type="password"
-          className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
-          placeholder="Avatar URL"
-        ></input>
+        <FormControl>
+          <FormLabel id="demo-radio-buttons-group-label">Role</FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="role"
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="student"
+              control={<Radio />}
+              label="Student"
+            />
+            <FormControlLabel
+              value="teacher"
+              control={<Radio />}
+              label="Teacher"
+            />
+          </RadioGroup>
+        </FormControl>
+
         <button className="rounded-2xl m-4 text-blue-400 bg-white w-3/5 px-4 py-2 shadow-md hover:text-white hover:bg-blue-400 transition duration-200 ease-in">
           Sign Up
         </button>
@@ -53,7 +123,7 @@ const SignupForm = ({setIsLogin}) => {
       >
         Sign In to your Account?
       </p>
-    </div>
+    </form>
   );
 };
 
