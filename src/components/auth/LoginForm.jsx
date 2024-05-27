@@ -3,7 +3,7 @@ import { Facebook, GitHub, Google } from "@mui/icons-material";
 
 const LoginForm = ({ setIsLogin }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-2xl flex flex-col w-full md:w-1/3 items-center max-w-4xl transition duration-1000 ease-out mr-32 rounded-xl">
+    <div className="bg-white rounded-2xl shadow-2xl flex flex-col w-full md:w-1/3 items-center max-w-4xl transition duration-1000 ease-out mr-32 rounded-xl scale-125 ">
       <h2 className="p-3 text-3xl font-bold text-purple-600">
         Educational Enhancement
       </h2>

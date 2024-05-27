@@ -77,14 +77,14 @@ function ResourcePage() {
             type="text"
           />
 
-          <h3 className="font-semibold mb-2">User status</h3>
+          <h3 className="font-semibold mb-2">Book type</h3>
           <div className="flex flex-col gap-2 mb-4">
             <FormControlLabel
               control={<Checkbox defaultChecked color="secondary" />}
               label={
                 <span className="flex items-center">
-                  Connected
-                  <Tooltip title="User is connected">
+                  Student textbook
+                  <Tooltip title="for students">
                     <InfoOutlinedIcon fontSize="small" className="ml-1" />
                   </Tooltip>
                 </span>
@@ -94,8 +94,8 @@ function ResourcePage() {
               control={<Checkbox defaultChecked color="secondary" />}
               label={
                 <span className="flex items-center">
-                  Verified
-                  <Tooltip title="User is verified">
+                  Teachers guide
+                  <Tooltip title="for teachers">
                     <InfoOutlinedIcon fontSize="small" className="ml-1" />
                   </Tooltip>
                 </span>
