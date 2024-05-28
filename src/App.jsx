@@ -8,6 +8,7 @@ import Join from "./components/auth/Join";
 import Discussion from "./pages/Discussion";
 import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
+import PdfViewer from "./components/PdfViewer";
 function App() {
   return (
     <div className=" bg-[#ffffff]">
@@ -17,6 +18,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ask" element={<Ask />} />
         <Route path="/resource" element={<Resource />} />
+        <Route path="/pdf-viewer/:path" element={<PdfViewer />} />
+
         <Route path="/Discussion" element={<Discussion />} />
         <Route path="/Question" element={<Questions />} />
 

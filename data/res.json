@@ -5,6 +5,7 @@
       "catagory": "Grade 9-12",
       "type": "text",
       "image": "../src/assets/files/mathtext9.jpg",
+      "path": "mathworkbook.pdf",
       "rating": 4,
       "review": 7,
       "subject": "math",
@@ -15,6 +16,7 @@
       "catagory": "Grade 4-8",
       "type": "tg",
       "image": "../src/assets/files/amhtext8.png",
+      "path": "src/assets/files/mathtext9.jpg",
       "rating": 3.5,
       "review": 2,
       "subject": "literature",
@@ -25,6 +27,8 @@
       "catagory": "Grade 9-12",
       "type": "text",
       "image": "../src/assets/files/mathtext11.jpg",
+      "path": "../src/assets/files/mathworkbook.pdf",
+
       "rating": 4.5,
       "review": 4,
       "subject": "math",
@@ -35,6 +39,8 @@
       "catagory": "Grade 9-12",
       "type": "text",
       "image": "../src/assets/files/phytext10.png",
+      "path": "../src/assets/files/mathtext9.jpg",
+
       "rating": 5,
       "review": 2,
       "subject": "math",
@@ -45,9 +51,23 @@
       "catagory": "Grade 9-12",
       "type": "exam",
       "image": "../src/assets/files/entrance2012.jpg",
+      "path": "../src/assets/files/mathtext9.jpg",
+
       "rating": 4.5,
       "review": 1,
       "subject": "science",
+      "language": "English"
+    },
+    {
+      "title": "College_Physics_11th_Edition_Serway_Vuil",
+      "catagory": "Grade 4-8",
+      "type": "tg",
+      "image": "../src/assets/files/engtg7.png",
+      "path": "College_Physics_11th_Edition_Serway_Vuil.pdf",
+
+      "rating": 3,
+      "review": 5,
+      "subject": "literature",
       "language": "English"
     },
     {
@@ -55,6 +75,8 @@
       "catagory": "Grade 4-8",
       "type": "tg",
       "image": "../src/assets/files/engtg7.png",
+      "path": "../src/assets/files/phyworkbook.docx",
+
       "rating": 3,
       "review": 5,
       "subject": "literature",
