@@ -8,7 +8,7 @@ function ResourceItem({ resource }) {
   const handleClick = () => {
     navigate(`/pdf-viewer/${encodeURIComponent(resource.path)}`);
   };
-
+console.log("respath",resource.path)
   return (
     <div className="flex items-center p-4 bg-gray-50 rounded-lg shadow">
       <img

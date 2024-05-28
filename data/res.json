@@ -1,49 +1,73 @@
 {
   "res": [
     {
+      "title": "College_Physics_11th_Edition_Serway_Vuil",
+      "catagory": "Grade 12+",
+      "type": "text",
+      "image": "../src/assets/files/serway.jpg",
+      "path": "../src/assets/files/College_Physics_11th_Edition_Serway_Vuil.pdf",
+
+      "rating": 3,
+      "review": 5,
+      "subject": "physics",
+      "language": "English"
+    },
+    {
       "title": "Grade 9 Math textbook",
       "catagory": "Grade 9-12",
       "type": "text",
-      "image": "../src/assets/files/mathtext9.jpg",
-      "path": "mathworkbook.pdf",
+      "image": "../src/assets/files/mathgr9.jpg",
+      "path": "../src/assets/files/mathworkbook.pdf",
       "rating": 4,
       "review": 7,
       "subject": "math",
       "language": "English"
     },
     {
-      "title": "Grade 8 Amharic Student textbook",
-      "catagory": "Grade 4-8",
-      "type": "tg",
-      "image": "../src/assets/files/amhtext8.png",
-      "path": "src/assets/files/mathtext9.jpg",
+      "title": "Mock with Answer-Electronics",
+      "catagory": "Grade 12+",
+      "type": "exam",
+      "image": "../src/assets/files/electronics.png",
+      "path": "../src/assets/files/Mock-Answer-Electronics.pdf",
       "rating": 3.5,
       "review": 2,
-      "subject": "literature",
-      "language": "Amharic"
+      "subject": "other",
+      "language": "English"
     },
     {
-      "title": "Grade 10 Math Student textbook",
-      "catagory": "Grade 9-12",
-      "type": "text",
-      "image": "../src/assets/files/mathtext11.jpg",
-      "path": "../src/assets/files/mathworkbook.pdf",
+      "title": "Signals and Systems Model Exit Exam",
+      "catagory": "Grade 12+",
+      "type": "exam",
+      "image": "../src/assets/files/signal.jpg",
+      "path": "../src/assets/files/Signals and Systems Model Exit Exam.pdf",
 
       "rating": 4.5,
       "review": 4,
-      "subject": "math",
+      "subject": "physics",
       "language": "English"
+    },
+    {
+      "title": "Amharic Grade 10 Student textbook",
+      "catagory": "Grade 9-12",
+      "type": "text",
+      "image": "../src/assets/files/amhtext8.png",
+      "path": "../src/assets/files/Amharic Grade 10 ST (MT)(BOOK).pdf",
+
+      "rating": 4.5,
+      "review": 4,
+      "subject": "Amharic",
+      "language": "Amharic"
     },
     {
       "title": "Grade 10 Physics Student textbook",
       "catagory": "Grade 9-12",
       "type": "text",
-      "image": "../src/assets/files/phytext10.png",
+      "image": "../src/assets/files/phygr10.png",
       "path": "../src/assets/files/mathtext9.jpg",
 
       "rating": 5,
       "review": 2,
-      "subject": "math",
+      "subject": "physics",
       "language": "English"
     },
     {
@@ -59,23 +83,11 @@
       "language": "English"
     },
     {
-      "title": "College_Physics_11th_Edition_Serway_Vuil",
-      "catagory": "Grade 4-8",
+      "title": "Grade 10 Math Teachers guide",
+      "catagory": "Grade 9-12",
       "type": "tg",
       "image": "../src/assets/files/engtg7.png",
-      "path": "College_Physics_11th_Edition_Serway_Vuil.pdf",
-
-      "rating": 3,
-      "review": 5,
-      "subject": "literature",
-      "language": "English"
-    },
-    {
-      "title": "Grade 7 English Teachers guide",
-      "catagory": "Grade 4-8",
-      "type": "tg",
-      "image": "../src/assets/files/engtg7.png",
-      "path": "../src/assets/files/phyworkbook.docx",
+      "path": "../src/assets/files/mathtg.pdf",
 
       "rating": 3,
       "review": 5,

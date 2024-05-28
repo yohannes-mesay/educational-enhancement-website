@@ -8,8 +8,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const PdfViewer = () => {
   const { path } = useParams();
-  const filePath = decodeURIComponent(path);
-
+  const filePath = path;
+  console.log("pth",path)   
+  console.log("filpath",filePath)
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
