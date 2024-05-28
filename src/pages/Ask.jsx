@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import arrow from '../assets/arrow.png'
 import { useNavigate } from 'react-router-dom'
+import { useDiscussion } from '../contexts/DiscussionContext'
 const Ask = () => {
   const navigate= useNavigate();
   const [title, setTitle]= useState('');
   const [description, setDescription]= useState('');
+  const [askedQuestion, setAskedQuestion]= useState({ questionText: " " , questionDescription: " "})
+  const {postQuestion , setQuestionList}=useDiscussion();
+  
  const submithandler=(e)=>{
   //  prevent refresh on submit
     e.preventDefault();
@@ -16,9 +20,16 @@ const Ask = () => {
   else if( !description){
     alert('Description is required');
   }
+setAskedQuestion({questionText: title, questionDescription: description})
   //  navigate to discussion page if title and description are not empty
-   title && description && navigate('/Discussion');
+   title &&
+     description &&
+     postQuestion({ questionText: title, questionDescription: description });
+  title && description && setTimeout(() => {
+    navigate("/Discussion");
+  }, ); 
  }
+console.log(askedQuestion);
 
   return (
     <div>

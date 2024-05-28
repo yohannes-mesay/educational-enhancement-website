@@ -19,7 +19,6 @@ function App() {
         <Route path="/resource" element={<Resource />} />
         <Route path="/Discussion" element={<Discussion />} />
         <Route path="/Question" element={<Questions />} />
-
         <Route path="/join" element={<Join />} />
       </Routes>
     </div>
