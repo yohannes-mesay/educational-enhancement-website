@@ -22,7 +22,6 @@ function App() {
 
         <Route path="/Discussion" element={<Discussion />} />
         <Route path="/Question" element={<Questions />} />
-
         <Route path="/join" element={<Join />} />
       </Routes>
     </div>

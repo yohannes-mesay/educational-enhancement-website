@@ -7,7 +7,7 @@ const Discusions_container = (props) => {
     <div>
       <div className="flex flex-col">
          {/* map each object to discussion question*/}
-        {props.question.map((question) => (
+        {props.questionList.map((question) => (
           <Discussion_question key={question.id} question={question} />))}
 
       </div>
