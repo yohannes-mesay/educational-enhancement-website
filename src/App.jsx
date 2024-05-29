@@ -10,6 +10,11 @@ import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
 import PdfViewer from "./components/PdfViewer";
 import Answer from "./pages/Answer";
+import OneQuiz from "./components/quizFiles/OneQuiz";
+import BioQuiz2013 from "./components/quizFiles/biology2013";
+import BioQuiz2014 from "./components/quizFiles/biology2014";
+import BioQuiz2015 from "./components/quizFiles/biology2015";
+import Profile from "./pages/Profile";
 function App() {
   return (
     <div className=" bg-[#ffffff]">
@@ -22,7 +27,12 @@ function App() {
         <Route path="/pdf-viewer/:path" element={<PdfViewer />} />
 
         <Route path="/Discussion" element={<Discussion />} />
-        <Route path="/Question" element={<Questions />} />
+        <Route path="/Questions" element={<Questions />} />
+        <Route path="/english2013" element={<OneQuiz />} />
+        <Route path="/biology2013" element={<BioQuiz2013 />} />
+        <Route path="/biology2014" element={<BioQuiz2014 />} />
+        <Route path="/biology2015" element={<BioQuiz2015 />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/Answer/:questionId" element={<Answer />} />
 
         <Route path="/join" element={<Join />} />

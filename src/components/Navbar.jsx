@@ -29,6 +29,10 @@ function Navbar(props) {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    navigate("/join");
+    logout();
+  };
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -47,7 +51,9 @@ function Navbar(props) {
   const loginhandler = () => {
     navigate("/join");
   };
-
+  const profielehandler = () => {
+    navigate("/profile");
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -78,6 +84,11 @@ function Navbar(props) {
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText onClick={loginhandler} primary="Login" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemText onClick={profielehandler} primary="Profile" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -111,7 +122,7 @@ function Navbar(props) {
             color="Black"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Edu Hub
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button onClick={homehandler} sx={{ color: "#ff" }}>
@@ -126,12 +137,17 @@ function Navbar(props) {
             <Button onClick={QuestionsHandler} sx={{ color: "#ff" }}>
               Questions
             </Button>
-            <button
-              onClick={localStorage.isLogin ? logout : loginhandler}
+            <Button
+              onClick={localStorage.isLogin ? handleLogout : loginhandler}
               className="bg-[#6528F7] w-20 h-8 rounded-md hover:text-[#6528F7] hover:bg-white hover:border-[#6528F7] "
             >
               {localStorage.isLogin ? "Logout" : "Login"}
-            </button>
+            </Button>
+            {localStorage.isLogin ? (
+              <Button onClick={profielehandler} sx={{ color: "#ff" }}>
+                Profile
+              </Button>
+            ) : null}
           </Box>
         </Toolbar>
       </AppBar>
