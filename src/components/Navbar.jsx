@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,42 +16,39 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../contexts/AuthContext";
 
 const drawerWidth = 240;
-const navItems = ["Home", "Discussion", "Resource",  "Questions"];
+const navItems = ["Home", "Discussion", "Resource", "Questions"];
 
-function Navbar (props) {
+function Navbar(props) {
+  const { logout } = useContext(AuthContext);
 
-
-
-   const { window } = props;
+  const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const homehandler = () => { 
-  navigate("/");
- }
+  const homehandler = () => {
+    navigate("/");
+  };
   const discussionHandler = () => {
-  navigate("/Discussion");
-  }
+    navigate("/Discussion");
+  };
   const ResourcesHandler = () => {
-  navigate("/resource");
- }
- const QuestionsHandler = () => {
-  navigate("/Questions");
- }
- const loginhandler = () => {
-  navigate("/join");
- }
-
+    navigate("/resource");
+  };
+  const QuestionsHandler = () => {
+    navigate("/Questions");
+  };
+  const loginhandler = () => {
+    navigate("/join");
+  };
 
   const drawer = (
-   
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
@@ -62,28 +59,27 @@ function Navbar (props) {
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Home" onClick={homehandler} />
           </ListItemButton>
-          </ListItem>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Discussion" onClick={discussionHandler} />
           </ListItemButton>
-          </ListItem>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Resources" onClick={ResourcesHandler} />
           </ListItemButton>
-          </ListItem>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Questions" onClick={QuestionsHandler} />
           </ListItemButton>
-          </ListItem>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText onClick={loginhandler} primary="Login" />
           </ListItemButton>
-          </ListItem>
-        
+        </ListItem>
       </List>
     </Box>
   );
@@ -130,8 +126,11 @@ function Navbar (props) {
             <Button onClick={QuestionsHandler} sx={{ color: "#ff" }}>
               Questions
             </Button>
-            <button onClick={loginhandler} className="bg-[#6528F7] w-20 h-8 rounded-md  hover:bg-white hover:border-[#6528F7] ">
-              Login
+            <button
+              onClick={localStorage.isLogin ? logout : loginhandler}
+              className="bg-[#6528F7] w-20 h-8 rounded-md hover:text-[#6528F7] hover:bg-white hover:border-[#6528F7] "
+            >
+              {localStorage.isLogin ? "Logout" : "Login"}
             </button>
           </Box>
         </Toolbar>
@@ -166,6 +165,5 @@ Navbar.propTypes = {
    */
   window: PropTypes.func,
 };
-
 
 export default Navbar;

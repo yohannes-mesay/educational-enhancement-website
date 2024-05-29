@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useParams } from "react-router-dom";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "./PdfViewer.css"; // Import your custom CSS
 
 // Ensure the versions match
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -9,8 +10,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const PdfViewer = () => {
   const { path } = useParams();
   const filePath = path;
-  console.log("pth",path)   
-  console.log("filpath",filePath)
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -33,7 +32,7 @@ const PdfViewer = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="max-w-screen-lg mx-auto flex flex-col h-screen">
       <div className="mb-4 flex justify-between items-center">
         <button
           onClick={previousPage}
@@ -53,9 +52,9 @@ const PdfViewer = () => {
           Next
         </button>
       </div>
-      <div className="border border-gray-300">
+      <div className="pdf-container border border-gray-300 flex-grow">
         <Document file={filePath} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={pageNumber} />
+          <Page pageNumber={pageNumber} width={window.innerWidth * 0.75} />
         </Document>
       </div>
     </div>

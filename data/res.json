@@ -13,6 +13,30 @@
       "language": "English"
     },
     {
+      "title": "Absolute Java (5th ed.) [Savitch & Mock 2012-03-19]",
+      "catagory": "Grade 12+",
+      "type": "text",
+      "image": "../src/assets/files/absolute.jpg",
+      "path": "../src/assets/files/absolute.pdf",
+
+      "rating": 3,
+      "review": 5,
+      "subject": "physics",
+      "language": "English"
+    },
+    {
+      "title": "Mock questions for 2015 E.C. Exit Exam",
+      "catagory": "Grade 12+",
+      "type": "exam",
+      "image": "../src/assets/files/mock2015.jpg",
+      "path": "../src/assets/files/mock.pdf",
+
+      "rating": 3,
+      "review": 5,
+      "subject": "other",
+      "language": "English"
+    },
+    {
       "title": "Grade 9 Math textbook",
       "catagory": "Grade 9-12",
       "type": "text",
@@ -62,8 +86,8 @@
       "title": "Grade 10 Physics Student textbook",
       "catagory": "Grade 9-12",
       "type": "text",
-      "image": "../src/assets/files/phygr10.png",
-      "path": "../src/assets/files/mathtext9.jpg",
+      "image": "../src/assets/files/phygr10.jpg",
+      "path": "../src/assets/files/phytext10.pdf",
 
       "rating": 5,
       "review": 2,

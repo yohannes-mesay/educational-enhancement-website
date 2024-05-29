@@ -145,9 +145,16 @@ function Resource() {
               variant="outlined"
               size="small"
             />
+
             <Chip
               className="cursor-pointer"
               label="Literature"
+              variant="outlined"
+              size="small"
+            />
+            <Chip
+              className="cursor-pointer"
+              label="other"
               variant="outlined"
               size="small"
             />
