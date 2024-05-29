@@ -9,7 +9,7 @@ const Ask = () => {
   const [description, setDescription]= useState('');
   const [askedQuestion, setAskedQuestion]= useState({ questionText: " " , questionDescription: " "})
   const {postQuestion , setQuestionList}=useDiscussion();
-  
+
  const submithandler=(e)=>{
   //  prevent refresh on submit
     e.preventDefault();
@@ -29,7 +29,7 @@ setAskedQuestion({questionText: title, questionDescription: description})
     navigate("/Discussion");
   }, ); 
  }
-console.log(askedQuestion);
+
 
   return (
     <div>

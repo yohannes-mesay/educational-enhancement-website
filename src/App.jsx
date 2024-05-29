@@ -8,6 +8,7 @@ import Join from "./components/auth/Join";
 import Discussion from "./pages/Discussion";
 import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
+import Answer from "./pages/Answer";
 function App() {
   return (
     <div className=" bg-[#ffffff]">
@@ -19,6 +20,8 @@ function App() {
         <Route path="/resource" element={<Resource />} />
         <Route path="/Discussion" element={<Discussion />} />
         <Route path="/Question" element={<Questions />} />
+        <Route path="/Answer/:questionId" element={<Answer />} />
+
         <Route path="/join" element={<Join />} />
       </Routes>
     </div>
