@@ -1,26 +1,22 @@
-import React from 'react'
+import React from "react";
 //arrow icon form material ui components
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { useState } from 'react';
-import Reply_container from './Reply_container';
-import { Button } from '@mui/material';
-import { useNavigate} from 'react-router-dom';
+import { useState } from "react";
+import Reply_container from "./Reply_container";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const Discussion_question = ({question}) => {
-  const [showDetails, setShowDetails] = useState(false)
+const Reply_Item = ({ question }) => {
+  const [showDetails, setShowDetails] = useState(false);
   const navigate = useNavigate();
-  const handelDescription = () => {
-    setShowDetails(!showDetails)
-  }
- 
-  const replyHandler = () => {
-    navigate(`/Answer/${question.questionId}`)
-  }
+
+
+
   return (
     <div>
       <div
-        onClick={replyHandler}
+    
         className="flex p-5 pt-3 bg-neutral-100 border-gray-300 shadow-md rounded-md mb-8"
       >
         <div className="flex flex-col w-full h-4/6">
@@ -39,24 +35,16 @@ const Discussion_question = ({question}) => {
                 </div>
                 <div className="">
                   <p className="text-lg font-semibold font-serif">
-                    {question.questionText}
+                    {question.answerText}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <p>{question.questionDescription}</p>
-          </div>
-          <div className='flex justify-end'>
-            <Button classname="text-[]" onClick={replyHandler}>
-              Reply
-            </Button>
-          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Discussion_question
+export default Reply_Item;

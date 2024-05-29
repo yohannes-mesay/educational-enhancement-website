@@ -1,18 +1,25 @@
-import React from 'react'
+import React from "react";
+import Reply_Item from "./Reply_Item";
 
-const Reply_container = () => (
-  <div>
-    <div className="w-[100%] mx auto ">
-      {/* list reply mad to quesition stored in this container */}
-      <div className="flex flex-col justify-center w-[70%] mx-auto">
-        <div className="my-5 justify-between flex ">
-          <h1>Reply</h1>
-          <p>Here are the replies to these question</p>
+const Reply_container = ({answerList}) => {
+
+  // code to generate a random id for each answer in anwe
+  return (
+    <div className="flex flex-col w-[100%] border-neutral-500 shadow-sm">
+      {answerList.length === 0 ? (
+        <div>
+          <h1>No replies yet</h1>
         </div>
-        
-      </div>
+      ) : (
+        <div>
+          {answerList.map((question) => (
+            <Reply_Item key={question.answerId} question={question} />
+          ))}
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
 
-export default Reply_container
+};
+
+export default Reply_container;

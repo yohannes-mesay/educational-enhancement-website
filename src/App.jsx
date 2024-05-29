@@ -8,6 +8,7 @@ import Join from "./components/auth/Join";
 import Discussion from "./pages/Discussion";
 import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
+import Answer from "./pages/Answer";
 import OneQuiz from "./components/quizFiles/OneQuiz";
 import BioQuiz2013 from "./components/quizFiles/biology2013";
 import BioQuiz2014 from "./components/quizFiles/biology2014";
@@ -29,6 +30,8 @@ function App() {
         <Route path="/biology2014" element={<BioQuiz2014 />} />
         <Route path="/biology2015" element={<BioQuiz2015 />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/Answer/:questionId" element={<Answer />} />
+
         <Route path="/join" element={<Join />} />
       </Routes>
     </div>
