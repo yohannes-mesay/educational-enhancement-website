@@ -183,6 +183,9 @@ function Resource() {
           </div>
         </main>
       </div>
+      <footer className="bg-gray-800 text-white p-4 text-center">
+        <div>&copy; 2024 Edu_hub. All rights reserved.</div>
+      </footer>
     </div>
   );
 }

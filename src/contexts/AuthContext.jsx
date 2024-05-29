@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const BASE_URL = "http://localhost:8080/user";
 const AuthContext = createContext();
 function AuthProvider({ children }) {
@@ -14,7 +15,7 @@ function AuthProvider({ children }) {
     localStorage.removeItem("email");
     localStorage.removeItem("name");
     localStorage.removeItem("lname");
-    localStorage.removeItem("phone");
+    localStorage.removeItem("role");
     localStorage.removeItem("isLogin");
   }
   async function signup(newUser) {

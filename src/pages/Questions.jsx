@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import QuestionCard from "../components/QuestionCard";
 const Questions = () => {
-  return (
-    <div>Questions</div>
-  )
-}
+  return <QuestionCard />;
+};
 
-export default Questions
+export default Questions;
