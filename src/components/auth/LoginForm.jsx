@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Facebook, GitHub, Google, Password } from "@mui/icons-material";
-import { useAuth } from "../../contexts/AuthContext";
+import { AuthContext, AuthProvider, useAuth } from "../../contexts/AuthContext";
 
 const LoginForm = ({ setIsLogin }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  // const { login } = useAuth();
+  const { login, error } = useContext(AuthContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
     const logged = await login(email, password);
     if (logged) {
       alert("logged");
+
+      navigate("/");
     }
   }
   return (
@@ -33,7 +38,10 @@ const LoginForm = ({ setIsLogin }) => {
         </div>
       </div>
       {/* Inputs */}
-      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center justify-center"
+      >
         <input
           type="email"
           className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-purple-600 focus:outline-none focus:ring-0"
@@ -51,6 +59,7 @@ const LoginForm = ({ setIsLogin }) => {
         <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-4 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in">
           Sign In
         </button>
+        {error && <p className="text-red-500">{error.message}</p>}
       </form>
       <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
       <p className="text-blue-400 mt-4 text-sm">Don't have an account?</p>

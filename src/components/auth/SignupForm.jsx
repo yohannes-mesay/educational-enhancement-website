@@ -1,5 +1,5 @@
 import { Facebook, GitHub, Google } from "@mui/icons-material";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth, AuthContext } from "../../contexts/AuthContext";
 import { useState } from "react";
 import {
   FormControl,
@@ -8,8 +8,11 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const SignupForm = ({ setIsLogin }) => {
-  const { signup } = useAuth();
+  const navigate = useNavigate();
+  const { signup, error } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     lname: "Tigistu",
     password: "50",
@@ -31,9 +34,13 @@ const SignupForm = ({ setIsLogin }) => {
   };
   async function handleSubmit(e) {
     e.preventDefault();
+
     const singed = await signup(formData);
+
     if (singed) {
-      alert("sucess");
+      alert("sucess. please login");
+      setIsLogin(true);
+      navigate("/join");
     }
   }
   return (
@@ -123,6 +130,7 @@ const SignupForm = ({ setIsLogin }) => {
       >
         Sign In to your Account?
       </p>
+      {error && <p className="text-red-500 text-center">{error.message}</p>}
     </form>
   );
 };
